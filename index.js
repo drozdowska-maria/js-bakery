@@ -34,13 +34,11 @@ function startInterval() {
   isMaking = true;
   duration = setInterval(runProgressBar, 1000);
   cookieButton.textContent = "zatrzymaj lepienie";
-  console.log(duration);
 }
 
 function stopInterval() {
   clearInterval(duration);
   cookieButton.textContent = "ulep ciasto";
-  console.log(duration);
 }
 
 function runProgressBar() {
@@ -61,8 +59,6 @@ function runProgressBar() {
   } else if (progressBar.style.width === "400px") {
     progressBar.style.width = "0px";
   }
-
-  console.log(progressBar.style.width);
 }
 
 let dough = [{ size: "", elementWHTML: "" }];
@@ -95,12 +91,10 @@ function makeCookies() {
     if (widthCookie == 0 && heightCookie == 0) {
       madeDough -= 1;
       event.target.remove();
-      console.log(madeDough);
       counterMadeDough.textContent = `Liczba ulepionych ciastowych kul: ${madeDough}`;
     } else if (document.querySelector("#cookie-alert")) {
       document.querySelector("#cookie-alert").remove();
     }
-    // console.log(document.querySelectorAll('.dough'))
   }
 
   return reduceCookieSize;
@@ -143,7 +137,6 @@ function bakeCookie() {
     madeCookies--;
     madeCookiesCounter.textContent = `Liczba ulepionych ciastek: ${madeCookies}`;
     cookiesInOven.textContent = `Liczba ciastek w piecu: ${ovenCookies}/9`;
-    console.log(ovenCookies);
     const cookie = createElement("div", "cookie");
 
     const myTray = document.querySelector(`.oven-item[empty="true"]`);
@@ -178,7 +171,6 @@ function bakeCookie() {
       if (event.target.style.backgroundColor === "brown") {
         finishedCookies += 1;
         finishedCookiesCounter.textContent = `Liczba gotowych ciastek: ${finishedCookies}`;
-        console.log(event.target);
       }
 
       event.target.remove();
@@ -194,8 +186,6 @@ function bakeCookie() {
     });
   } else if (ovenCookies >= 9 || madeCookies === 0) {
     ovenButton.disabled = true;
-
-    // console.log("cistkcz uieczone " + ovenCookies)
 
     if (ovenCookies >= 9) {
       const ovenAlert = createElement("span", "redalert");
@@ -240,7 +230,6 @@ function buyCookie() {
     } else {
       moneyEarned = moneyEarned + randomCookiesNumber * 4;
     }
-    console.log(moneyEarned);
 
     finishedCookies -= randomCookiesNumber;
     moneyEarnedContent.textContent = `Zarobiliśmy: ${moneyEarned} PLN`;
@@ -248,8 +237,6 @@ function buyCookie() {
   }
 
   setTimeout(buyCookie, randomTime);
-  console.log(randomCookiesNumber);
-  console.log(randomTime);
 }
 
 buyCookie();
